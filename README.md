@@ -6,8 +6,10 @@
 
 - `npm install -g react-native-cli`
   if required install watchman and node
-  - `nbrew install node`
-  - `nbrew install watchman`
+  - `brew install node`
+  - `brew install watchman`
+  - make sure yarn version 4.6.0 if build fails
+
 
 ## Project setup
 
