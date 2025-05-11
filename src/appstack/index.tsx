@@ -11,8 +11,7 @@ const AppStack = () => {
   return (
     <NavigationStack.Navigator
       initialRouteName={Screen.HomeScreen}
-      screenOptions={{headerShown: false}}
-    >
+      screenOptions={{headerShown: false}}>
       <NavigationStack.Screen name={Screen.HomeScreen} component={HomeScreen} />
       <NavigationStack.Screen
         name={Screen.SearchScreen}

@@ -10,7 +10,6 @@
   - `brew install watchman`
   - make sure yarn version 4.6.0 if build fails
 
-
 ## Project setup
 
 - clone repository

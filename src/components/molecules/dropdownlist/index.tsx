@@ -27,8 +27,7 @@ const DropDownList = <T extends object & WithDisplayName>({
           <DropdownItem
             onPress={() => {
               handleSelect(item);
-            }}
-          >
+            }}>
             <DropdownText>{item.displayName}</DropdownText>
           </DropdownItem>
         )}
@@ -45,8 +44,6 @@ const DropdownArea = styled.View`
   width: 100%;
   height: 800px;
   padding: 10px 0;
-  z-index: 1000;
-  position: absolute;
 `;
 
 const DropdownItem = styled(TouchableOpacity)`

@@ -18,6 +18,7 @@ const ExpandableSearch: React.FC<ExpandSearchType> = props => {
     cities,
     query,
     searchPlaceholder,
+    shouldShowDropdown,
   } = useExpandSearch(props);
 
   return (
@@ -26,8 +27,7 @@ const ExpandableSearch: React.FC<ExpandSearchType> = props => {
         style={{
           paddingLeft: horizontalPadding,
           paddingRight: horizontalPadding,
-        }}
-      >
+        }}>
         <SearchArea>
           <SearchInput
             ref={searchRef}
@@ -39,7 +39,7 @@ const ExpandableSearch: React.FC<ExpandSearchType> = props => {
         </SearchArea>
       </AnimatedWrapper>
 
-      {isInputFocused && (
+      {shouldShowDropdown && (
         <DropdownAnimated style={{height: dropdownHeight}}>
           <DropDownList filteredResults={cities} handleSelect={handleSelect} />
         </DropdownAnimated>

@@ -20,8 +20,7 @@ const WeatherCard = ({weather, onPress}: PropsType) => {
       <Card
         onTouchEnd={() => {
           onPress(weather);
-        }}
-      >
+        }}>
         <Content>
           <Left>
             <CityName>{weather.name}</CityName>

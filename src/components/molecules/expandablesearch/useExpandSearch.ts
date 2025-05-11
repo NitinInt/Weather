@@ -37,6 +37,7 @@ const useExpandSearch = ({onSelect, placeholder}: ExpandSearchType) => {
 
   const isInputFocused =
     (searchRef.current?.isFocused() ?? false) && cities.length > 0;
+  const shouldShowDropdown = isInputFocused && cities.length > 0;
   const animateDropdown = useCallback(
     (show: boolean) => {
       const screenHeight = Dimensions.get('window').height;
@@ -89,6 +90,7 @@ const useExpandSearch = ({onSelect, placeholder}: ExpandSearchType) => {
     animateHorizontalPadding,
     onSearch,
     searchPlaceholder,
+    shouldShowDropdown,
   };
 };
 

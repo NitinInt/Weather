@@ -7,8 +7,7 @@ const RefreshIcon = () => {
       height="32px"
       id="svg2"
       viewBox="0 0 32 32"
-      width="32px"
-    >
+      width="32px">
       <G id="background">
         <Rect fill="none" height="32" width="32" />
       </G>

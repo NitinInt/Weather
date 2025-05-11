@@ -36,7 +36,7 @@
       "@Weather/*": ["./src/*"]
     }
   },
-  "include": ["src", "index.js", "typings", "app.config.ts", "themes"],
+  "include": ["src", "index.js", "typings", "app.config.ts", "themes", "e2e"],
   "exclude": [
     "node_modules",
     "babel.config.js",
