@@ -1,6 +1,5 @@
-import {useIntl} from 'react-intl';
-
 import {DayWeatherType} from '@Weather/types/weather';
+import {useIntl} from 'react-intl';
 
 import {CityType} from '../../hooks/services/useCitySearch';
 import {useTypedNavigation} from '../../hooks/useTypedNavigation';

@@ -13,6 +13,7 @@ const useHomeScreen = () => {
     lat,
     lon,
   } = useCurrentCityDetection();
+
   const {forecasts, isError, isLoading} = use5DaysForecast({
     lat,
     lon,

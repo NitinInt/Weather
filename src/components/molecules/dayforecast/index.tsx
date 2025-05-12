@@ -1,8 +1,7 @@
 // DayForecast.tsx
+import WeatherIcon from '@Weather/components/atoms/weathericon';
 import React, {memo} from 'react';
 import styled from 'styled-components/native';
-
-import WeatherIcon from '@Weather/components/atoms/weathericon';
 
 type DayForecastProps = {
   day: string;

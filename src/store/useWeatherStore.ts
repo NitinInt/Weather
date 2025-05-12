@@ -1,7 +1,6 @@
+import {DayWeatherType} from '@Weather/types/weather';
 import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
-
-import {DayWeatherType} from '@Weather/types/weather';
 
 type WeatherStoreType = {
   weatherList: DayWeatherType[];

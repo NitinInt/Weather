@@ -1,8 +1,7 @@
-import {render} from '@testing-library/react-native';
-import React from 'react';
-
 import {MockAppContainer} from '@Weather/__specs__/mocks/MockAppContainer';
 import {TEST_IDS} from '@Weather/__specs__/testIDs';
+import {render} from '@testing-library/react-native';
+import React from 'react';
 
 import HomeScreen from '.';
 import useHomeScreen from './useHomeScreen';

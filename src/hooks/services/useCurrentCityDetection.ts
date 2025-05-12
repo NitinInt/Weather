@@ -1,7 +1,7 @@
+import {env} from '@Weather/utils/env';
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
 
-import {env} from '@Weather/utils/env';
 const DEFAULT_STALE_TIME = 300_000;
 const CITY_URL = `${env.CURRENT_CITY_URL}/${env.IP_TOKEN}`;
 
@@ -24,7 +24,8 @@ const useCurrentCityDetection = () => {
     isLoading,
     isFetching,
   } = useQuery<CurrentCityType, Error>({
-    queryKey: ['currentCixsdnbjh1'],
+    queryKey: ['cityDetection'],
+
     queryFn: async () => {
       const response = await axios.get<CurrentCityType>(CITY_URL);
       return response.data;

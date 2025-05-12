@@ -1,7 +1,6 @@
+import {env} from '@Weather/utils/env';
 import {memo} from 'react';
 import styled from 'styled-components/native';
-
-import {env} from '@Weather/utils/env';
 
 const WeatherIcon = (icon: string) => {
   return (

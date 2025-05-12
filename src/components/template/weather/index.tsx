@@ -1,8 +1,7 @@
-import {useIntl} from 'react-intl';
-import styled from 'styled-components/native';
-
 import {TEST_IDS} from '@Weather/__specs__/testIDs';
 import {DayWeatherType} from '@Weather/types/weather';
+import {useIntl} from 'react-intl';
+import styled from 'styled-components/native';
 
 import ErrorMessage from '../../atoms/errormessage';
 import LoadingIndicator from '../../atoms/loading';

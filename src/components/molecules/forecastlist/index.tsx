@@ -1,11 +1,10 @@
 // FiveDayForecastList.tsx
+import {ForeCastsType, ForeCastType} from '@Weather/types/weather';
+import {dayFromDate} from '@Weather/utils/time';
 import React, {memo} from 'react';
 import {useIntl} from 'react-intl';
 import {FlatList, FlatListProps} from 'react-native';
 import styled from 'styled-components/native';
-
-import {ForeCastsType, ForeCastType} from '@Weather/types/weather';
-import {dayFromDate} from '@Weather/utils/time';
 
 import DayForecast from '../dayforecast';
 

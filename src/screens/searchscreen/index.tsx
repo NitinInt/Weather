@@ -1,9 +1,8 @@
+import ExpandableSearch from '@Weather/components/molecules/expandablesearch';
+import {DayWeatherType} from '@Weather/types/weather';
 import React from 'react';
 import {FlatList, FlatListProps} from 'react-native';
 import styled from 'styled-components/native';
-
-import ExpandableSearch from '@Weather/components/molecules/expandablesearch';
-import {DayWeatherType} from '@Weather/types/weather';
 
 import useSearchScreen from './useSearchcreen';
 import CloseButton from '../../components/atoms/closebutton';

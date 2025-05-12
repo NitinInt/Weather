@@ -1,9 +1,9 @@
 // hooks/useWeather.ts
+import {DayWeatherType} from '@Weather/types/weather';
+import {env} from '@Weather/utils/env';
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
 
-import {DayWeatherType} from '@Weather/types/weather';
-import {env} from '@Weather/utils/env';
 const WEATHER_URL = `${env.WEATHER_API_BASE_URL}/data/2.5/weather`;
 const DEFAULT_STALE_TIME = 120_000; //
 

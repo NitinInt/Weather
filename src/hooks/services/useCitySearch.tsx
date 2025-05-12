@@ -1,7 +1,6 @@
+import {env} from '@Weather/utils/env';
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
-
-import {env} from '@Weather/utils/env';
 
 export type CityType = {
   name: string; // City name
