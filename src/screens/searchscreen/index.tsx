@@ -56,11 +56,8 @@ const Header = styled.Text`
   margin-left: 20px;
 `;
 
-const WeatherList = styled(
-  FlatList as new (
-    props: FlatListProps<DayWeatherType>,
-  ) => FlatList<DayWeatherType>,
-)`
+const TypedList = FlatList<DayWeatherType>;
+const WeatherList = styled(TypedList)`
   padding: 0 20px;
 `;
 
