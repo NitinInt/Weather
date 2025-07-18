@@ -3,7 +3,7 @@ import React, {memo} from 'react';
 import styled from 'styled-components/native';
 
 import {TEST_IDS} from '@Weather/__specs__/testIDs';
-import {ForeCastsType} from '@Weather/types/weather';
+import {ForeCastsType} from '@Weather/features/weather/models/weather';
 
 import ForecastList from '../forecastlist';
 

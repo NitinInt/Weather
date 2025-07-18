@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
-import {defaultCacheTime} from '@Weather/store/constants';
+import {defaultCacheTime} from '@Weather/utils/const';
 import {env} from '@Weather/utils/env';
 
 import {CityDTO, CityType} from '../models/city';

@@ -1,6 +1,6 @@
 import {useGet5DaysForecastQuery} from '@Weather/features/weather/api/weatherApiSlice';
+import {DayWeatherType} from '@Weather/features/weather/models/weather';
 import useDeviceLocation from '@Weather/hooks/useDeviceLocation';
-import {DayWeatherType} from '@Weather/types/weather';
 
 import {useTypedNavigation} from '../../hooks/useTypedNavigation';
 import {Screen, WeatherStackParamList} from '../Screen';
@@ -13,7 +13,6 @@ const useHomeScreen = () => {
     data: forecastData,
     isError,
     isLoading,
-    error,
   } = useGet5DaysForecastQuery({
     lat: deviceCurrentLocation.lat,
     lon: deviceCurrentLocation.lon,

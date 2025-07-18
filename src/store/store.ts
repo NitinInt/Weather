@@ -1,7 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
 
+import {weatherSlice} from '@Weather/features/weather/store/weatherSlice';
+
 import {localeSlice} from './slices/locale/localeSlice';
-import {weatherSlice} from './slices/weather/weatherSlice';
 import {cityApiSlice} from '../features/city/api/cityApiSlice';
 import {weatherApiSlice} from '../features/weather/api/weatherApiSlice';
 

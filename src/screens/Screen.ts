@@ -1,4 +1,4 @@
-import {DayWeatherType} from '@Weather/types/weather';
+import {DayWeatherType} from '@Weather/features/weather/models/weather';
 
 export enum Screen {
   HomeScreen = 'HomeScreen',

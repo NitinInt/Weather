@@ -1,8 +1,9 @@
 import {useGetDayWeatherQuery} from '@Weather/features/weather/api/weatherApiSlice';
-import {DayWeatherType} from '@Weather/types/weather';
+import {DayWeatherType} from '@Weather/features/weather/models/weather';
+import {addWeather} from '@Weather/features/weather/store/weatherSlice';
+import {useAppDispatch} from '@Weather/hooks/useAppDispatch';
 
 import {useTypedNavigation} from '../../hooks/useTypedNavigation';
-import {useWeatherStore} from '../../store/useWeatherStore';
 import {WeatherStackParamList} from '../Screen';
 
 type PropsType = {
@@ -13,15 +14,14 @@ type PropsType = {
 const useWeatherScreen = ({city, dayWeather}: PropsType) => {
   const navigation = useTypedNavigation<WeatherStackParamList>();
   const {data: weather, isError, isLoading} = useGetDayWeatherQuery({city});
-  const addWeather = useWeatherStore(store => store.addWeather);
+  const dispatch = useAppDispatch();
+
   const onSave = () => {
     navigation.goBack();
     if (weather) {
-      addWeather(weather);
+      dispatch(addWeather(weather));
     }
   };
-
-  console.log('useWeatherScreen===', weather);
 
   const onClose = () => {
     navigation.goBack();

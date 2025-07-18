@@ -5,12 +5,12 @@ import styled from 'styled-components/native';
 import ErrorMessage from '@Weather/components/atoms/errormessage';
 import LoadingIndicator from '@Weather/components/atoms/loading';
 import Expandablesearch from '@Weather/components/template/expandablesearch';
-import {DayWeatherType} from '@Weather/types/weather';
+import {DayWeatherType} from '@Weather/features/weather/models/weather';
+import {useAppSelector} from '@Weather/hooks/useAppSelector';
 
 import useSearchScreen from './useSearchScreen';
 import CloseButton from '../../components/atoms/closebutton';
 import WeatherCard from '../../components/molecules/weathercard';
-import {useWeatherStore} from '../../store/useWeatherStore';
 
 const keyExtractor = (item: DayWeatherType) => item.name;
 
@@ -27,7 +27,7 @@ const SearchScreen = () => {
     cities,
     errorMessage,
   } = useSearchScreen();
-  const weatherList = useWeatherStore(state => state.weatherList);
+  const weatherList = useAppSelector(state => state.weather.weatherList);
 
   const renderItem = ({item}: {item: DayWeatherType}) => {
     return <WeatherCard weather={item} onPress={onSelectWeather} />;

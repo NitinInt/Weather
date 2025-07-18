@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {DayWeatherType} from '@Weather/types/weather';
+import {DayWeatherType} from '../models/weather';
 
 type WeatherState = {
   weatherList: DayWeatherType[];
