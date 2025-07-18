@@ -1,10 +1,13 @@
-import ExpandableSearch from '@Weather/components/molecules/expandablesearch';
-import {DayWeatherType} from '@Weather/types/weather';
 import React from 'react';
-import {FlatList, FlatListProps} from 'react-native';
+import {FlatList} from 'react-native';
 import styled from 'styled-components/native';
 
-import useSearchScreen from './useSearchcreen';
+import ErrorMessage from '@Weather/components/atoms/errormessage';
+import LoadingIndicator from '@Weather/components/atoms/loading';
+import Expandablesearch from '@Weather/components/template/expandablesearch';
+import {DayWeatherType} from '@Weather/types/weather';
+
+import useSearchScreen from './useSearchScreen';
 import CloseButton from '../../components/atoms/closebutton';
 import WeatherCard from '../../components/molecules/weathercard';
 import {useWeatherStore} from '../../store/useWeatherStore';
@@ -12,20 +15,52 @@ import {useWeatherStore} from '../../store/useWeatherStore';
 const keyExtractor = (item: DayWeatherType) => item.name;
 
 const SearchScreen = () => {
-  const {onDismissSearch, onSelectWeather, headerTitle, onSelectSearch} =
-    useSearchScreen();
+  const {
+    onDismissSearch,
+    onSelectWeather,
+    headerTitle,
+    onSearch,
+    onSelectSearch,
+    isError,
+    isLoading,
+    searchPlaceholder,
+    cities,
+    errorMessage,
+  } = useSearchScreen();
   const weatherList = useWeatherStore(state => state.weatherList);
 
   const renderItem = ({item}: {item: DayWeatherType}) => {
     return <WeatherCard weather={item} onPress={onSelectWeather} />;
   };
 
+  if (isError) {
+    return (
+      <Wrapper>
+        <ErrorMessage message={errorMessage} />
+      </Wrapper>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <Wrapper>
+        <LoadingIndicator />
+      </Wrapper>
+    );
+  }
+
   return (
     <SafeArea>
       <Wrapper>
         <CloseButton onClosePress={onDismissSearch} />
         <Header>{headerTitle}</Header>
-        <ExpandableSearch onSelect={onSelectSearch} />
+        <Expandablesearch
+          onSelect={onSelectSearch}
+          data={cities}
+          onSearch={onSearch}
+          placeholder={searchPlaceholder}
+        />
+
         <WeatherList
           data={weatherList}
           keyExtractor={keyExtractor}

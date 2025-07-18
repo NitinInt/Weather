@@ -1,11 +1,12 @@
-import {TEST_IDS} from '@Weather/__specs__/testIDs';
-import {DayWeatherType} from '@Weather/types/weather';
 import {useIntl} from 'react-intl';
 import styled from 'styled-components/native';
 
-import ErrorMessage from '../../atoms/errormessage';
-import LoadingIndicator from '../../atoms/loading';
-import TodayForeCast from '../../molecules/todayforecast';
+import {TEST_IDS} from '@Weather/__specs__/testIDs';
+import {DayWeatherType} from '@Weather/types/weather';
+
+import ErrorMessage from '../../../../components/atoms/errormessage';
+import LoadingIndicator from '../../../../components/atoms/loading';
+import TodayForeCast from '../../../../components/molecules/todayforecast';
 
 type PropsType = {
   weather?: DayWeatherType;

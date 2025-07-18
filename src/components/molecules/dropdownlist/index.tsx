@@ -2,21 +2,19 @@ import {memo} from 'react';
 import {TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
 
+import {WithDisplayName} from '@Weather/components/types';
+
 import {createStyledList} from '../../../utils/type';
 
-type WithDisplayName = {
-  displayName: string;
-};
-
-export type DorpDownPropsType<T extends WithDisplayName> = {
+export type DropDownPropsType<T extends WithDisplayName> = {
   filteredResults: T[];
   handleSelect: (item: T) => void;
 };
 
-const DropDownList = <T extends object & WithDisplayName>({
+const DropDownList = <T extends WithDisplayName>({
   filteredResults,
   handleSelect,
-}: DorpDownPropsType<T>) => {
+}: DropDownPropsType<T>) => {
   const List = createStyledList<T>();
   return (
     <DropdownArea>
@@ -36,7 +34,7 @@ const DropDownList = <T extends object & WithDisplayName>({
     </DropdownArea>
   );
 };
-export default memo(DropDownList);
+export default memo(DropDownList) as unknown as typeof DropDownList;
 
 const DropdownArea = styled.View`
   background-color: transparent;

@@ -1,6 +1,7 @@
-import {DayWeatherType} from '@Weather/types/weather';
 import {memo} from 'react';
 import styled from 'styled-components/native';
+
+import {DayWeatherType} from '@Weather/types/weather';
 
 import {convertToTimezone} from '../../../utils/time';
 import WithWeatherBackground from '../weatherbackground';

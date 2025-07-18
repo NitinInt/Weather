@@ -1,6 +1,7 @@
-import {TEST_IDS} from '@Weather/__specs__/testIDs';
 import {memo} from 'react';
 import styled from 'styled-components/native';
+
+import {TEST_IDS} from '@Weather/__specs__/testIDs';
 
 import MapButton from '../../atoms/mapbutton';
 import SearchButton from '../../atoms/searchbutton';

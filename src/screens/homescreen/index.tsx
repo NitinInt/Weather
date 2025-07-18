@@ -1,12 +1,13 @@
+import React from 'react';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import styled from 'styled-components/native';
+
 import ForecastDisplay from '@Weather/components/molecules/forecastdisplay';
 import WithWeatherBackground from '@Weather/components/molecules/weatherbackground';
 import WeatherBottomToolbar from '@Weather/components/molecules/weatherbottomtoolbar';
 import WeatherSkeleton from '@Weather/components/molecules/weatherskeleton';
-import Weather from '@Weather/components/template/weather';
+import Weather from '@Weather/features/weather/components/weather';
 import {noop} from '@Weather/utils/const';
-import React from 'react';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import styled from 'styled-components/native';
 
 import useHomeScreen from './useHomeScreen';
 

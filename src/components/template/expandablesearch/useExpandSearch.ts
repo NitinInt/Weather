@@ -1,33 +1,31 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {useIntl} from 'react-intl';
 import {Dimensions, Animated, Keyboard} from 'react-native';
 import {useDebouncedCallback} from 'use-debounce';
 
+import {WithDisplayName} from '@Weather/components/types';
+
 import {ExpandSearchType} from './types';
-import {CityType, useCitySearch} from '../../../hooks/services/useCitySearch';
-import {SearchRefType} from '../../atoms/searchinput/types';
+import {SearchRefType} from '../../../components/atoms/searchinput/types';
 
 const screenHeight = Dimensions.get('window').height;
-const useExpandSearch = ({onSelect, placeholder}: ExpandSearchType) => {
+const useExpandSearch = <T extends WithDisplayName>({
+  onSelect,
+  placeholder,
+  data,
+  onSearch,
+}: ExpandSearchType<T>) => {
   const [query, setQuery] = useState('');
-  const intl = useIntl();
   const searchRef = useRef<SearchRefType>(null);
-  const {cities} = useCitySearch(query);
+
   const dropdownHeight = useRef(new Animated.Value(screenHeight)).current;
   const horizontalPadding = useRef(new Animated.Value(20)).current;
-  const searchPlaceholder =
-    placeholder ?? intl.formatMessage({id: 'SearchPlaceholder'});
-
-  const onSearch = useDebouncedCallback(val => {
-    setQuery(val);
-  }, 100);
 
   const handleSearch = (text: string) => {
     onSearch(text);
     searchRef?.current?.clear();
   };
 
-  const handleSelect = (item: CityType) => {
+  const handleSelect = (item: T) => {
     const cityName = item?.displayName ?? '';
     Keyboard.dismiss();
     searchRef.current?.blur();
@@ -36,8 +34,8 @@ const useExpandSearch = ({onSelect, placeholder}: ExpandSearchType) => {
   };
 
   const isInputFocused =
-    (searchRef.current?.isFocused() ?? false) && cities.length > 0;
-  const shouldShowDropdown = isInputFocused && cities.length > 0;
+    (searchRef.current?.isFocused() ?? false) && data.length > 0;
+  const shouldShowDropdown = isInputFocused && data.length > 0;
   const animateDropdown = useCallback(
     (show: boolean) => {
       const screenHeight = Dimensions.get('window').height;
@@ -84,13 +82,13 @@ const useExpandSearch = ({onSelect, placeholder}: ExpandSearchType) => {
     handleSearch,
     handleSelect,
     isInputFocused,
-    cities,
+    data,
     query,
     setQuery,
     animateHorizontalPadding,
     onSearch,
-    searchPlaceholder,
     shouldShowDropdown,
+    placeholder,
   };
 };
 

@@ -6,14 +6,14 @@ import useWeatherScreen from './useWeatherScreen';
 import Close from '../../assets/svg/close';
 import PlusIcon from '../../assets/svg/plus';
 import WithWeatherBackground from '../../components/molecules/weatherbackground';
-import Weather from '../../components/template/weather';
+import Weather from '../../features/weather/components/weather';
 import {Screen, WeatherStackParamList} from '../Screen';
 
 const WeatherScreen = () => {
   const route =
     useRoute<RouteProp<WeatherStackParamList, Screen.WeatherScreen>>();
 
-  const {city, dayWeather} = route.params;
+  const {city = '', dayWeather} = route.params;
   const {onSave, onClose, weather, isError, isLoading} = useWeatherScreen({
     city,
     dayWeather,
@@ -36,7 +36,6 @@ const WeatherScreen = () => {
     children: (
       <Container>
         <TopButtonsWrapper>{renderActionButton()}</TopButtonsWrapper>
-
         <Weather weather={weather} isError={isError} isLoading={isLoading} />
       </Container>
     ),

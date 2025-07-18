@@ -2,12 +2,16 @@ import React, {memo} from 'react';
 import {Animated} from 'react-native';
 import styled from 'styled-components/native';
 
-import SearchInput from '../../atoms/searchinput';
-import DropDownList from '../dropdownlist';
+import SearchInput from '@Weather/components/atoms/searchinput';
+import Dropdownlist from '@Weather/components/molecules/dropdownlist';
+import {WithDisplayName} from '@Weather/components/types';
+
 import {ExpandSearchType} from './types';
 import useExpandSearch from './useExpandSearch';
 
-const ExpandableSearch: React.FC<ExpandSearchType> = props => {
+const ExpandableSearch = <T extends WithDisplayName>(
+  props: ExpandSearchType<T>,
+) => {
   const {
     searchRef,
     dropdownHeight,
@@ -15,10 +19,10 @@ const ExpandableSearch: React.FC<ExpandSearchType> = props => {
     handleSearch,
     handleSelect,
     isInputFocused,
-    cities,
+    data,
     query,
-    searchPlaceholder,
     shouldShowDropdown,
+    placeholder,
   } = useExpandSearch(props);
 
   return (
@@ -33,7 +37,7 @@ const ExpandableSearch: React.FC<ExpandSearchType> = props => {
             ref={searchRef}
             value={query}
             onSearchInputChange={handleSearch}
-            placeholder={searchPlaceholder}
+            placeholder={placeholder}
             isActive={isInputFocused}
           />
         </SearchArea>
@@ -41,14 +45,14 @@ const ExpandableSearch: React.FC<ExpandSearchType> = props => {
 
       {shouldShowDropdown && (
         <DropdownAnimated style={{height: dropdownHeight}}>
-          <DropDownList filteredResults={cities} handleSelect={handleSelect} />
+          <Dropdownlist<T> filteredResults={data} handleSelect={handleSelect} />
         </DropdownAnimated>
       )}
     </RootWrapper>
   );
 };
 
-export default memo(ExpandableSearch);
+export default memo(ExpandableSearch) as unknown as typeof ExpandableSearch;
 
 const RootWrapper = styled.View`
   width: 100%;

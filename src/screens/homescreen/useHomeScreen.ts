@@ -1,28 +1,30 @@
-import use5DaysForecast from '@Weather/hooks/services/use5DaysForeCast';
+import {useGet5DaysForecastQuery} from '@Weather/features/weather/api/weatherApiSlice';
+import useDeviceLocation from '@Weather/hooks/useDeviceLocation';
 import {DayWeatherType} from '@Weather/types/weather';
 
-import useCurrentCityDetection from '../../hooks/services/useCurrentCityDetection';
 import {useTypedNavigation} from '../../hooks/useTypedNavigation';
 import {Screen, WeatherStackParamList} from '../Screen';
 
 const useHomeScreen = () => {
   const {navigate} = useTypedNavigation<WeatherStackParamList>();
-  const {
-    cityName,
-    isLoading: cityLoading,
-    lat,
-    lon,
-  } = useCurrentCityDetection();
+  const {deviceCurrentLocation} = useDeviceLocation();
 
-  const {forecasts, isError, isLoading} = use5DaysForecast({
-    lat,
-    lon,
-    isEnabled: !cityLoading,
+  const {
+    data: forecastData,
+    isError,
+    isLoading,
+    error,
+  } = useGet5DaysForecastQuery({
+    lat: deviceCurrentLocation.lat,
+    lon: deviceCurrentLocation.lon,
   });
 
   const onSearchPress = () => {
     navigate(Screen.SearchScreen);
   };
+
+  const forecasts = forecastData?.list ?? [];
+  const cityName = forecastData?.city.name ?? '';
 
   const todayWeather: DayWeatherType | null = forecasts[0]
     ? {
