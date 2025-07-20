@@ -1,5 +1,3 @@
-require('react-native-reanimated').setUpTests();
-
 jest.mock('@react-navigation/native', () => {
   const {useEffect} = require('react');
   const actualNav = jest.requireActual('@react-navigation/native');
