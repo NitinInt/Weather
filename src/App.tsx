@@ -7,14 +7,17 @@
 
 import React from 'react';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/es/integration/react';
 
 import AppContainer from './AppContainer';
-import {store} from './store/store';
+import {persistor, store} from './store/store';
 
 function App(): React.JSX.Element {
   return (
     <Provider store={store}>
-      <AppContainer />
+      <PersistGate loading={null} persistor={persistor}>
+        <AppContainer />
+      </PersistGate>
     </Provider>
   );
 }

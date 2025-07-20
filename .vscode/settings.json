@@ -3,6 +3,7 @@
     "Citysearch",
     "Expandablesearch",
     "forecastlist",
+    "persistor",
     "rootreducer"
   ]
 }

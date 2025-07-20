@@ -8,7 +8,6 @@ import {DayWeatherType} from '@Weather/features/weather/models/weather';
 import WeatherScreen from '@Weather/screens/weathercreen';
 console.log('WeatherScreen is:===', WeatherScreen);
 
-
 jest.mock('@react-native-community/geolocation', () => ({
   getCurrentPosition: jest.fn((success, error, options) => {
     success({
